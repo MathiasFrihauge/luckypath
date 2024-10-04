@@ -1,0 +1,143 @@
+<!-- newsletter.vue -->
+<template>
+  <div class="newsletter-form">
+    <form @submit.prevent="submitForm">
+        <h2 class="text-center mb-4">Claim your deal on email</h2>
+        <div class="form-group mb-3">
+            <!-- <label for="email">Email address</label> -->
+            <input type="email" class="form-control" id="email" v-model="email" placeholder="Enter your email" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100 mt-1" :disabled="loading">
+          <template v-if="loading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+          </template>
+          <template v-else>Submit</template>
+        </button>
+    </form>
+    <p v-if="message" :class="message.status" class="mt-2 text-center">{{ message.msg }}</p>
+
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      // firstName: '',
+      // lastName: '', 
+      email: '',
+      loading: false,
+      message: null,
+    }
+  },
+  props: {
+    listtype: {
+      type: String,
+      default: () => ""
+    }
+  },
+  methods: {
+    async submitForm() {
+      this.loading = true
+      this.message = null
+    
+      try {
+        const response = await this.$axios.$post('/api/subscribe', {
+          email: this.email,
+          campaignName: this.listtype
+        })
+
+        let url = response.url;
+        
+        window.location.href = url;
+        
+        if (response.status === 200) {
+          this.message = {
+            status: 'success',
+            msg: response.message,
+          }
+        } else {
+          /*this.message = {
+            status: 'error',
+            msg: response.message,
+          }
+            */
+        }
+        this.email = '';
+      } catch (error) {
+        this.message = {
+            status: 'error',
+            msg: 'An error occurred. Please try again.',
+          }
+        console.error('Subscription error:', error)
+      } finally {
+        this.loading = false
+      }
+    },
+  },
+}
+</script>
+
+<style scoped>
+.newsletter-form label {
+  font-weight: 600;
+}
+.newsletter-form input {
+    background: #ededed;
+    line-height: 2.5rem;
+    font-size: 19px;
+    border: 1px solid #919191;
+    border-radius: 10px;
+}
+.newsletter-form .btn {
+    font-size: 19px;
+    font-weight: 800;
+    padding: 0 59px;
+    line-height: 56px;
+    color: var(--white);
+    box-shadow: 0px 4px 4px 0px #00000040;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+p.success {
+  color: green;
+  border: 1px solid;
+  padding: 6px;
+  font-size: 18px;
+}
+
+p.error {
+    color: red;
+    border: 1px solid;
+    padding: 6px;
+    font-size: 18px;
+}
+
+@media (max-width:767px){
+  p.error, p.success {
+    font-size: 16px;
+  }
+  .newsletter-form input {
+    font-size: 14px;
+    line-height: 1.5rem;
+  }
+  .newsletter-form label {
+    font-size: 14px;
+  }
+  .newsletter-form .btn {
+      font-size: 12px;
+      padding: 0 22px;
+      line-height: 32px;
+      border-radius: 7px;
+  }
+}
+@media (max-width:991px){
+  .newsletter-form .btn {
+      font-size: 15px;
+      padding: 0 34px;
+      line-height: 40px;
+  }
+}
+</style>

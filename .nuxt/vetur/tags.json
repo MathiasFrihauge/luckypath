@@ -1,0 +1,32 @@
+{
+  "Footer": {
+    "description": "Auto imported from components/global/Footer.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/global/Header.vue"
+  },
+  "GamblingSitesCards": {
+    "description": "Auto imported from components/GamblingSitesCards.vue"
+  },
+  "HeroBanner": {
+    "description": "Auto imported from components/HeroBanner.vue"
+  },
+  "HomeCmsBlock": {
+    "description": "Auto imported from components/HomeCmsBlock.vue"
+  },
+  "NewsletterForm": {
+    "description": "Auto imported from components/NewsletterForm.vue"
+  },
+  "NewsletterFormsms": {
+    "description": "Auto imported from components/NewsletterFormsms.vue"
+  },
+  "OnlineGamingMenu": {
+    "description": "Auto imported from components/OnlineGamingMenu.vue"
+  },
+  "PaymentOptions": {
+    "description": "Auto imported from components/PaymentOptions.vue"
+  },
+  "TwoColumnLayout": {
+    "description": "Auto imported from components/TwoColumnLayout.vue"
+  }
+}

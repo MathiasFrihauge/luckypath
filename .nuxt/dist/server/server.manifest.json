@@ -1,0 +1,31 @@
+{
+  "entry": "server.js",
+  "files": {
+    "components/footer.js": "components/footer.js",
+    "components/gambling-sites-cards.js": "components/gambling-sites-cards.js",
+    "components/header.js": "components/header.js",
+    "components/hero-banner.js": "components/hero-banner.js",
+    "components/home-cms-block.js": "components/home-cms-block.js",
+    "components/newsletter-form.js": "components/newsletter-form.js",
+    "components/newsletter-formsms.js": "components/newsletter-formsms.js",
+    "components/online-gaming-menu.js": "components/online-gaming-menu.js",
+    "components/payment-options.js": "components/payment-options.js",
+    "components/two-column-layout.js": "components/two-column-layout.js",
+    "pages/index.js": "pages/index.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "components/footer.js": "components/footer.js.map",
+    "components/gambling-sites-cards.js": "components/gambling-sites-cards.js.map",
+    "components/header.js": "components/header.js.map",
+    "components/hero-banner.js": "components/hero-banner.js.map",
+    "components/home-cms-block.js": "components/home-cms-block.js.map",
+    "components/newsletter-form.js": "components/newsletter-form.js.map",
+    "components/newsletter-formsms.js": "components/newsletter-formsms.js.map",
+    "components/online-gaming-menu.js": "components/online-gaming-menu.js.map",
+    "components/payment-options.js": "components/payment-options.js.map",
+    "components/two-column-layout.js": "components/two-column-layout.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "server.js": "server.js.map"
+  }
+}
