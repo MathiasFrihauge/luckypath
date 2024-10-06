@@ -108,7 +108,7 @@
                 </div>
             </div>
         </footer>
-        <div v-if="showAdComponent" class="ad_box" data-aos="fade-up" >
+        <div v-if="showAdComponent" class="ad_box fade-up" >
             <button type="button" class="btn-close" @click="hideAd"></button>
             <div class="image">
                 <img src="/images/ad-img.jpg" alt="">

@@ -31,23 +31,26 @@ import { getAuth, signInAnonymously } from 'firebase/auth'
 
 let messaging, auth
 
-// Check if we are in the client-side (browser)
-if (process.client) {
-  // Firebase configuration
-  const firebaseConfig = {
-      apiKey: process.env.firebaseConfig.apiKey,
-      authDomain: process.env.firebaseConfig.authDomain,
-      projectId: process.env.firebaseConfig.projectId,
-      storageBucket: process.env.firebaseConfig.storageBucket,
-      messagingSenderId: process.env.firebaseConfig.messagingSenderId,
-      appId: process.env.firebaseConfig.appId,
-      measurementId: process.env.firebaseConfig.measurementId
-    }
+export default ({ app }, inject) => {
+  if (process.client) {
+    window.addEventListener('load', () => {
+      const firebaseConfig = {
+        apiKey: process.env.firebaseConfig.apiKey,
+        authDomain: process.env.firebaseConfig.authDomain,
+        projectId: process.env.firebaseConfig.projectId,
+        storageBucket: process.env.firebaseConfig.storageBucket,
+        messagingSenderId: process.env.firebaseConfig.messagingSenderId,
+        appId: process.env.firebaseConfig.appId,
+        measurementId: process.env.firebaseConfig.measurementId
+      }
 
-  // Initialize Firebase
-  const firebaseApp = initializeApp(firebaseConfig)
-  messaging = getMessaging(firebaseApp)
-  auth = getAuth(firebaseApp)
+      // Initialize Firebase
+      const firebaseApp = initializeApp(firebaseConfig)
+      messaging = getMessaging(firebaseApp)
+      auth = getAuth(firebaseApp)
+
+      // Inject into Nuxt's context
+      inject('firebase', { messaging, getToken, onMessage, auth, signInAnonymously })
+    })
+  }
 }
-
-export { messaging, getToken, onMessage, auth, signInAnonymously }

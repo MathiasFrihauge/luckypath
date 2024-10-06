@@ -3,7 +3,7 @@
         <div class="container text-md-center">
             <h3>BEST ONLINE GAMBLING PAYMENT OPTIONS</h3>
             <p>THE BEST GAMBLING SITES PROVIDE A RANGE OF TRUSTED PAYMENT OPTIONS. BUT WHAT ARE THE BENEFITS AND DRAWBACKS OF THESE? WE DISCUSS WHAT BANKING METHODS THERE ARE AND WHICH ONES WE RECOMMEND FOR ONLINE GAMBLING. CHECK OUT OUR COMPREHENSIVE PAYMENTS LISTING HERE AND FIND A METHOD YOU ARE COMFORTABLE PLAYING WITH.</p>
-            <div class="row align-items-center justify-content-center gx-4 gx-md-5" data-aos="fade-up">
+            <div class="row align-items-center justify-content-center gx-4 gx-md-5 fade-up">
                 <div class="col-lg-auto col-md col">
                     <img src="/images/Google_Pay.png" alt="">
                 </div>

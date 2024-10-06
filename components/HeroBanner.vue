@@ -4,9 +4,9 @@
         <div class="container container-lg">
             <div class="row">
                 <div class="col-lg-7 col-md-8 text-center text-md-start">
-                  <h1 data-aos="fade-up" >{{ title }} </h1>
-                  <p data-aos="fade-up" > {{ description }}</p>
-                    <div class="text-center" data-aos="fade-up">
+                  <h1 class="fade-up" >{{ title }} </h1>
+                  <p class="fade-up" > {{ description }}</p>
+                    <div class="text-center fade-up">
                         <nuxt-link :to="ctaLink" class="btn" >{{ ctaText }}</nuxt-link>
                     
                     </div>

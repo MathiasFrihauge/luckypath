@@ -3,31 +3,31 @@
         <div class="container">
             <div class="row justify-content-lg-between justify-content-center gx-0 gy-md-0 gy-4">
                 <div class="col-md-2 col-4">
-                    <div class="box" data-aos="fade-up">
+                    <div class="box fade-up">
                         <img src="/images/casino.png" alt="">
                         <p>ONLINE CASINO</p>
                     </div>
                 </div>
                 <div class="col-md-2 col-4">
-                    <div class="box" data-aos="fade-up">
+                    <div class="box fade-up">
                         <img src="/images/poker.png" alt="">
                         <p>ONLINE POKER</p>
                     </div>
                 </div>
                 <div class="col-md-2 col-4">
-                    <div class="box" data-aos="fade-up">
+                    <div class="box fade-up">
                         <img src="/images/slots.png" alt="">
                         <p>ONLINE SLOTS</p>
                     </div>
                 </div>
                 <div class="col-md-2 col-4">
-                    <div class="box" data-aos="fade-up">
+                    <div class="box fade-up">
                         <img src="/images/blackjack.png" alt="">
                         <p>ONLINE BLACKJACK</p>
                     </div>
                 </div>
                 <div class="col-md-2 col-4">
-                    <div class="box" data-aos="fade-up">
+                    <div class="box fade-up">
                         <img src="/images/roulette.png" alt="">
                         <p>ONLINE ROULETTE</p>
                     </div>

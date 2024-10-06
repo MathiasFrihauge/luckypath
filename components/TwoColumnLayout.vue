@@ -3,21 +3,21 @@
         <div class="container container-lg">
             <div class="row align-items-lg-center align-items-start">
                 <template v-if="layout === 'left-content-right-image'">
-                    <div class="col-md-6 pe-4" data-aos="fade-right">
+                    <div class="col-md-6 pe-4 fade-right">
                         <h3>{{ title }}</h3>
                         <div v-html="description" />
 
                     </div>
-                    <div class="col-md-6 ps-4" data-aos="fade-left">
+                    <div class="col-md-6 ps-4 fade-left">
                         <img src="images/casino-listing.jpg" alt="">
                     </div>
                 </template>
                 
                 <template v-if="layout === 'left-image-right-content'">
-                    <div class="col-md-6 ps-4 order-1 order-md-0" data-aos="fade-right">
+                    <div class="col-md-6 ps-4 order-1 order-md-0 fade-right">
                         <img src="images/stay-updated.jpg" alt="">
                     </div>
-                    <div class="col-md-6 pe-4" data-aos="fade-left">
+                    <div class="col-md-6 pe-4 fade-left">
                         <h3>{{ title }}</h3>
                         <div v-html="description" />
                     </div>

@@ -47,7 +47,7 @@
                                     </template>
                                     <template v-if="item.emailLink">
                                         <li>
-                                            <a href="#" @click.prevent="openModal(item.emailLink)" ><img src="/images/message.png" alt=""></a>
+                                            <a href="#" @click.prevent="openModal(item.emailLink)"><img src="/images/message.png" alt=""></a>
                                         </li>
                                     </template>
                                 </ul>
@@ -75,18 +75,18 @@
         </div>
 
         <!-- Modal structure -->
-        <div v-if="showModal" class="modal show" data-aos="fade-down" style="display: block;" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
-                <div class="modal-body">
-                    <NewsletterForm :listtype="casinoClicked"/>
+        <div v-if="showModal" class="modal show fade-down" style="display: block;" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
+                    <div class="modal-body">
+                        <NewsletterForm :listtype="casinoClicked"/>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
 
-        <div v-if="showModalSms" class="modal show" data-aos="fade-down" style="display: block;" tabindex="-1" aria-hidden="true">
+        <div v-if="showModalSms" class="modal show fade-down" style="display: block;" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <button type="button" class="btn-close" @click="closeModalSms" aria-label="Close"></button>

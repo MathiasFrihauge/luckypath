@@ -29,7 +29,8 @@ import GamblingSitesCards from '~/components/GamblingSitesCards.vue'
 import HomeCmsBlock from '~/components/HomeCmsBlock.vue'
 import PaymentOptions from '~/components/PaymentOptions.vue'
 import Footer from '~/components/global/Footer.vue'
-import { messaging, getToken, onMessage, auth, signInAnonymously } from '~/plugins/firebase'
+// import { messaging, getToken, onMessage } from '~/plugins/firebase'
+// import { getToken, onMessage } from '~/plugins/firebase'
 
 export default {
   components: {
@@ -44,75 +45,49 @@ export default {
   },
   mounted() {
     if (process.client && 'serviceWorker' in navigator) {
-      // Register the service worker
-      navigator.serviceWorker
-        .register('/sw.js') // Workbox with Firebase integration
-        .then((registration) => {
-          // console.log('Service Worker registered with scope:', registration.scope)
+      window.addEventListener('load', () => {
+        // Register the service worker
+        navigator.serviceWorker
+          .register('/sw.js')
+          .then((registration) => {
+            if (registration.installing) {
+              registration.installing.addEventListener('statechange', (event) => {
+                if (event.target.state === 'activated') {
+                  this.requestNotificationPermission()
+                }
+              })
+            } else if (registration.waiting || registration.active) {
+              this.requestNotificationPermission()
+            }
+          })
+          .catch((err) => {
+            console.error('Service Worker registration failed:', err)
+          })
 
-          // Wait for the service worker to activate
-          if (registration.installing) {
-            registration.installing.addEventListener('statechange', (event) => {
-              if (event.target.state === 'activated') {
-                this.requestNotificationPermission()
-              }
-            })
-          } else if (registration.waiting || registration.active) {
-            // SW is already active, request permission immediately
-            this.requestNotificationPermission()
-          }
+        // Listen for foreground messages
+        onMessage(this.$firebase.messaging, (payload) => {
+          console.log('Message received in foreground: ', payload)
         })
-        .catch((err) => {
-          console.error('Service Worker registration failed:', err)
-        })
-
-      // Listen for foreground messages
-      onMessage(messaging, (payload) => {
-        // console.log('Message received in foreground: ', payload)
       })
     }
   },
   methods: {
     async requestNotificationPermission() {
       if (Notification.permission === 'granted') {
-        // Permission already granted
-        // await this.authenticateAnonymouslyAndRequestFCMToken()
         await this.getFCMToken()
       } else {
-        // Request permission from the user
         Notification.requestPermission().then(async (permission) => {
           if (permission === 'granted') {
-            // console.log('Notification permission granted.')
-            // await this.authenticateAnonymouslyAndRequestFCMToken()
             await this.getFCMToken()
-          } else {
-            // console.log('Notification permission denied.')
           }
         })
       }
     },
-    // async authenticateAnonymouslyAndRequestFCMToken() {
-    //   try {
-    //     // Sign in anonymously
-    //     const userCredential = await signInAnonymously(auth)
-    //     // console.log('User signed in anonymously:', userCredential.user.uid)
-
-    //     // After anonymous authentication, request the FCM token
-    //     await this.getFCMToken()
-    //   } catch (error) {
-    //     console.error('Error signing in anonymously:', error)
-    //   }
-    // },
     async getFCMToken() {
-      console.log('getFCMToken INN');
-      
       try {
-        const vapidKey = process.env.firebaseConfig.vapidKey;
-        console.log('vapidKey ==>> ', vapidKey);
-        
-        const currentToken = await getToken(messaging, { vapidKey })
-        console.log('currentToken ==>> ', currentToken);
-        
+        const vapidKey = process.env.firebaseConfig.vapidKey
+        const currentToken = await getToken(this.$firebase.messaging, { vapidKey })
+
         if (currentToken) {
           console.log('FCM Token:', currentToken)
           // Send the token to your server for notification handling
