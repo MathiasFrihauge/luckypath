@@ -165,6 +165,7 @@ button.btn-close {
     padding: 8px;
     border-radius: 50%;
     opacity: 1;
+    z-index: 1;
 }
 .gambling_sites_section .head {
     font-size: 32px;

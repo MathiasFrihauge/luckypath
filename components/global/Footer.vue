@@ -7,7 +7,7 @@
                     <div class="col-lg-3 col-md-12">
                         <a href="#" class="footer_logo"><img src="/images/footer-logo.png" alt=""></a>
                         <vue-country-dropdown
-                            class="mb-4"
+                            class="mb-4"    
                             @onSelect="onSelect"
                             :preferredCountries="['TR', 'US', 'GB']"
                             :defaultCountry="'GB'"
