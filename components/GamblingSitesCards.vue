@@ -261,6 +261,7 @@ button.btn-close {
     align-items: center;
     justify-content: center;
     background-color: #71E06B;
+    background-color: red;
     border-radius: 20px;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
