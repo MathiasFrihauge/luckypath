@@ -37,7 +37,9 @@
                                 <ul>
                                     <template v-if="item.whatsappLink">
                                         <li>
-                                            <a href="#" @click.prevent="openModalSms(item.whatsappLink)" @touchstart.prevent="openModal(item.whatsappLink)" target="_blank"><img src="/images/whatsapp.png" alt=""></a>
+                                            <a href="#" @click.prevent="openModalSms(item.whatsappLink)" @touchstart.prevent="openModal(item.whatsappLink)">
+                                                <img src="/images/whatsapp.png" alt="">
+                                            </a>
                                         </li>
                                     </template>
                                     <template v-if="item.telegramLink">
