@@ -37,9 +37,9 @@
                                 <ul>
                                     <template v-if="item.whatsappLink">
                                         <li>
-                                            <a href="#" @click.prevent="openModalSms(item.whatsappLink)" @touchstart.prevent="openModal(item.whatsappLink)">
+                                            <div class="link" @click.prevent="openModalSms(item.whatsappLink)" @touchstart.prevent="openModal(item.whatsappLink)">
                                                 <img src="/images/whatsapp.png" alt="">
-                                            </a>
+                                            </div>
                                         </li>
                                     </template>
                                     <template v-if="item.telegramLink">
@@ -49,7 +49,7 @@
                                     </template>
                                     <template v-if="item.emailLink">
                                         <li>
-                                            <a href="#" @click.prevent="openModal(item.emailLink)" ><img src="/images/message.png" alt=""></a>
+                                            <a @click.prevent="openModal(item.emailLink)" ><img src="/images/message.png" alt=""></a>
                                         </li>
                                     </template>
                                 </ul>
@@ -253,7 +253,8 @@ button.btn-close {
 .gambling_sites_section .bonus small svg {
     filter: drop-shadow(0px 4px 4px #00000040);
 }
-.gambling_sites_section .bonus ul li a{
+.gambling_sites_section .bonus ul li a,
+.gambling_sites_section .bonus ul li .link{
     height: 88px;
     width: 88px;
     display: flex;
