@@ -26,6 +26,9 @@ export default {
     { path: '/api', handler: '~/server-middleware/sendsms-api.js' },
     { path: '/api', handler: '~/server-middleware/storesms-api.js' }
   ],
+  server: {
+    host: "0.0.0.0"
+  },
 
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -35,7 +38,7 @@ export default {
     '~/assets/css/county-dropdown.css',
     '~/assets/css/global.css',
   ],
-  
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/aos.js', mode: 'client' },
@@ -104,7 +107,7 @@ export default {
   // Configure axios
   axios: {
   baseURL: '/'
-    
+
   },
 
   // Add publicRuntimeConfig

@@ -3,15 +3,15 @@
         <div class="container">
             <p class="head">{{ title }}</p>
             <template v-if="cardData && cardData.length">
-                
-                <div 
+
+                <div
                     v-for="(item, index) in cardData"
                     :key="index"
                     class="item"
                 >
                     <div class="luckypath_choice">{{ item.badgeTitle }}</div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-12 col-md-3">
                             <h2>{{ item.title }}</h2>
                             <img :src="item.image" alt="">
                             <template v-if="item.rating">
@@ -23,10 +23,10 @@
                                 </div>
                             </template>
                         </div>
-                        <div class="col-md-5 col-7 align-items-center d-flex">
+                        <div class="col-12 col-sm-7 col-md-5 align-items-center d-flex">
                             <p>{{ item.description }}</p>
                         </div>
-                        <div class="col-md-4 col-5">
+                        <div class="col-12 col-sm-5 col-md-4">
                             <div class="bonus">
                                 <p>{{ item.receiveBonusText}}</p>
                                 <small>CLAIM BELOW
@@ -35,23 +35,17 @@
                                     </svg>
                                 </small>
                                 <ul>
-                                    <template v-if="item.whatsappLink">
-                                        <li>
-                                            <div class="link" @click.prevent="openModalSms(item.whatsappLink)" @touchstart.prevent="openModal(item.whatsappLink)">
-                                                <img src="/images/whatsapp.png" alt="">
-                                            </div>
-                                        </li>
-                                    </template>
-                                    <template v-if="item.telegramLink">
-                                        <li>
-                                            <a :href="item.telegramLink" target="_blank"><img src="/images/telegram.png" alt=""></a>
-                                        </li>
-                                    </template>
-                                    <template v-if="item.emailLink">
-                                        <li>
-                                            <a @click.prevent="openModal(item.emailLink)" ><img src="/images/message.png" alt=""></a>
-                                        </li>
-                                    </template>
+                                    <li v-if="item.whatsappLink">
+                                        <a @click.prevent="openModalSms(item.whatsappLink)" @touchstart.prevent="openModal(item.whatsappLink)">
+                                            <img src="/images/whatsapp.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li v-if="item.telegramLink">
+                                        <a :href="item.telegramLink" target="_blank"><img src="/images/telegram.png" alt=""></a>
+                                    </li>
+                                    <li v-if="item.emailLink">
+                                        <a @click.prevent="openModal(item.emailLink)" ><img src="/images/message.png" alt=""></a>
+                                    </li>
                                 </ul>
                                 <p class="visiters">LIKES:{{ item.likes }}<img src="/images/like.png" alt="">VISITORS TODAY:{{ item.visitors}}<img src="/images/eye.png" alt=""></p>
                             </div>
@@ -60,13 +54,13 @@
                     <!-- <p>
                         <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.66667 6.66667L0 0H13.3333L6.66667 6.66667Z" fill="#D9D9D9"/>
-                        </svg>                    
+                        </svg>
                     </p> -->
                     <p>
                         <span v-html="item.termsAndConditions"></span>
                         <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.66667 6.66667L0 0H13.3333L6.66667 6.66667Z" fill="#D9D9D9"/>
-                        </svg>                    
+                        </svg>
                     </p>
                 </div>
 
@@ -102,7 +96,7 @@
         <!-- Overlay for the modal backdrop -->
         <div v-if="showModal" @click="closeModal" class="modal-backdrop fade show"></div>
         <div v-if="showModalSms" @click="closeModalSms" class="modal-backdrop fade show"></div>
-        
+
     </div>
 </template>
 
@@ -142,14 +136,14 @@ export default {
         closeModal() {
             this.showModal = false;
         } ,
-        
+
         openModalSms(casino) {
             this.casinoClicked = casino;
             this.showModalSms = true;
         },
         closeModalSms() {
             this.showModalSms = false;
-        }  
+        }
     }
 }
 </script>
@@ -253,8 +247,7 @@ button.btn-close {
 .gambling_sites_section .bonus small svg {
     filter: drop-shadow(0px 4px 4px #00000040);
 }
-.gambling_sites_section .bonus ul li a,
-.gambling_sites_section .bonus ul li .link{
+.gambling_sites_section .bonus ul li a{
     height: 88px;
     width: 88px;
     display: flex;
@@ -263,6 +256,7 @@ button.btn-close {
     background-color: #71E06B;
     border-radius: 20px;
     box-shadow: 0px 4px 4px 0px #00000040;
+    cursor: pointer;
 }
 .gambling_sites_section .bonus ul li:nth-child(2) a{
     background-color: #3986C4;

@@ -32,7 +32,7 @@ import { getAuth, signInAnonymously } from 'firebase/auth'
 let messaging, auth
 
 // Check if we are in the client-side (browser)
-if (process.client) {
+if (process.client && 'serviceWorker' in navigator) {
   // Firebase configuration
   const firebaseConfig = {
       apiKey: process.env.firebaseConfig.apiKey,
