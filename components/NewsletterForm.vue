@@ -7,7 +7,7 @@
             <!-- <label for="email">Email address</label> -->
             <input type="email" class="form-control" id="email" v-model="email" placeholder="Enter your email" required>
         </div>
-        
+
         <button type="submit" class="btn btn-primary w-100 mt-1" :disabled="loading">
           <template v-if="loading">
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -17,7 +17,6 @@
         </button>
     </form>
     <p v-if="message" :class="message.status" class="mt-2 text-center">{{ message.msg }}</p>
-
   </div>
 </template>
 
@@ -25,34 +24,31 @@
 export default {
   data() {
     return {
-      // firstName: '',
-      // lastName: '', 
       email: '',
       loading: false,
       message: null,
     }
   },
   props: {
-    listtype: {
+    listType: {
       type: String,
-      default: () => ""
+      default: ""
     }
   },
   methods: {
     async submitForm() {
       this.loading = true
       this.message = null
-    
+
       try {
         const response = await this.$axios.$post('/api/subscribe', {
           email: this.email,
-          campaignName: this.listtype
+          campaignName: this.listType
         })
 
-        let url = response.url;
-        
-        window.location.href = url;
-        
+        window.location.href = response.url;
+
+        // TODO: This code is unreachable. Do we need to display success message before the redirect?
         if (response.status === 200) {
           this.message = {
             status: 'success',

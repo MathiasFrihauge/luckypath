@@ -76,7 +76,7 @@
             <div class="modal-content">
                 <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
                 <div class="modal-body">
-                    <NewsletterForm :listtype="casinoClicked"/>
+                    <NewsletterForm :list-type="casinoClicked"/>
                 </div>
             </div>
         </div>
