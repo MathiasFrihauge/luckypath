@@ -29,7 +29,7 @@ function getKlaviyoSetup(campaignName) {
         listId: process.env.KLAVIYO_LIST_ID_BUBBLESBET,
         redirectDomain: process.env.BUBBLESBET_DOMAIN
       }
-    case 'GRANSINO':
+    case 'LOVECASINO':
       return {
         listId: process.env.KLAVIYO_LIST_ID_LOVECASINO,
         redirectDomain: process.env.LOVECASINO_DOMAIN
@@ -113,8 +113,9 @@ app.post('/subscribe', (req, res) => {
     return res.status(404).json({ error: 'Invalid campaign name' });
   }
 
-  //Store data in the csv
+
   try {
+    //Store data in the csv
     const csvRow = {
       campaignName,
       email
@@ -129,13 +130,13 @@ app.post('/subscribe', (req, res) => {
       const csvData = parse([csvRow], { header: false });
       fs.appendFileSync(csvFilePath, `\n${csvData}`, 'utf8');
     }
-  } catch (error) {
-    // TODO: Store error data in logs? No need to send it back to the user
-    console.error('Error writing to CSV file:', error);
-  }
 
-  // Make klaviyo API request
-  try {
+    // Make klaviyo API request
+    const requestData = getKlaviyoRequestData({
+      email: email,
+      id: klaviyoSetup.listId
+    });
+
     axios({
       method: 'POST',
       url: process.env.KLAVIYO_API_URL,
@@ -144,13 +145,10 @@ app.post('/subscribe', (req, res) => {
         'revision': '2024-07-15',
         'Content-Type': 'application/json'
       },
-      data: getKlaviyoRequestData({
-        email: email,
-        id: klaviyoSetup.listId
-      }),
+      data: requestData,
     }).then(response => {
       // TODO: Store success data in logs? No need to send it back to the user
-      console.log(response);
+      console.log('success', response);
       // res.status(200).json({
       //   status: 200,
       //   message: 'Thank you for subscribing! Please check your email for further instructions.',
@@ -159,7 +157,7 @@ app.post('/subscribe', (req, res) => {
     })
     .catch(error => {
       // TODO: Store error data in logs? No need to send it back to the user
-      console.log(error);
+      console.log('error', error);
       // res.status(500).json({
       //   status: 400,
       //   error: 'Subscription failed',
@@ -174,11 +172,11 @@ app.post('/subscribe', (req, res) => {
     //   error: 'Subscription failed',
     //   details: error.response ? error.response.data : error.message
     // });
+  } finally {
+    res.json({
+      url: klaviyoSetup.redirectDomain
+    });
   }
-
-  return res.json({
-    url: klaviyoSetup.redirectDomain
-  });
 });
 
 module.exports = app;

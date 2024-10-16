@@ -46,22 +46,9 @@ export default {
           campaignName: this.listType
         })
 
-        window.location.href = response.url;
-
-        // TODO: This code is unreachable. Do we need to display success message before the redirect?
-        if (response.status === 200) {
-          this.message = {
-            status: 'success',
-            msg: response.message,
-          }
-        } else {
-          /*this.message = {
-            status: 'error',
-            msg: response.message,
-          }
-            */
-        }
         this.email = '';
+
+        window.location.href = response.url;
       } catch (error) {
         this.message = {
             status: 'error',
