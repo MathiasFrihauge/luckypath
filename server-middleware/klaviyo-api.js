@@ -92,7 +92,7 @@ app.post('/subscribe', async (req, res) => {
   }
 
   
-/*
+
   try {
    
     var data = JSON.stringify({
@@ -146,17 +146,17 @@ app.post('/subscribe', async (req, res) => {
     })
     .catch(function (error) {
       console.log(error);
-      res.status(500).json({ status: 400, error: 'Subscription failed', details: error.response ? error.response.data : error.message });
+      res.status(500).json({ status: 400, error: 'klayvio failed', details: error.response ? error.response.data : error.message });
     });
 
     
 
   } catch (error) {
     console.error('Klaviyo API error:', error.response ? error.response.data : error.message);
-    res.status(500).json({ error: 'Subscription failed', details: error.response ? error.response.data : error.message });
+    res.status(500).json({ error: 'Subscription failed whole script', details: error.response ? error.response.data : error.message });
   }
 
-*/
+
 
     //store in csv 
     const csvRow = {
