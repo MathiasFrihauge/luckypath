@@ -5,6 +5,13 @@ export default {
     htmlAttrs: {
       lang: 'en'
     },
+    script: [
+      {
+        src: 'https://static.klaviyo.com/onsite/js/V46vbd/klaviyo.js',
+        type: 'text/javascript',
+        async: true
+      }
+    ],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

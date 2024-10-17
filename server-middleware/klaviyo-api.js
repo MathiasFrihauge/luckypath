@@ -134,7 +134,7 @@ app.post('/subscribe', (req, res) => {
     // Make klaviyo API request
     const requestData = getKlaviyoRequestData({
       email: email,
-      id: klaviyoSetup.listId
+      id: klaviyoSetup.listId,
     });
 
     axios({

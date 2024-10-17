@@ -27,6 +27,7 @@
                             <p>{{ item.description }}</p>
                         </div>
                         <div class="col-12 col-sm-5 col-md-4">
+                            <div class="klaviyo-form-RECfSS"></div>
                             <div class="bonus">
                                 <p>{{ item.receiveBonusText}}</p>
                                 <small>CLAIM BELOW
@@ -116,6 +117,13 @@ export default {
             casinoClicked: ""
         }
     },
+    mounted() {
+    const script = document.createElement('script');
+    script.src = 'https://static.klaviyo.com/onsite/js/V46vbd/klaviyo.js';
+    script.type = 'text/javascript';
+    script.async = true;
+    document.body.appendChild(script);
+  },
     props: {
         title: {
             type: String,
