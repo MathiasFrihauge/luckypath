@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header :menuItems="menuItems" />
-    <HeroBanner 
+    <HeroBanner
     :desktopImage="bannerData.desktopImage"
     :mobileImage="bannerData.mobileImage"
     :title="bannerData.title"
@@ -105,14 +105,14 @@ export default {
     // },
     async getFCMToken() {
       console.log('getFCMToken INN');
-      
+
       try {
         const vapidKey = process.env.firebaseConfig.vapidKey;
         console.log('vapidKey ==>> ', vapidKey);
-        
+
         const currentToken = await getToken(messaging, { vapidKey })
         console.log('currentToken ==>> ', currentToken);
-        
+
         if (currentToken) {
           console.log('FCM Token:', currentToken)
           // Send the token to your server for notification handling
@@ -133,7 +133,7 @@ export default {
         { name: 'Blog', link: '/blog' },
         { name: 'Contact Us', link: '/contact' }
       ],
-      bannerData: { 
+      bannerData: {
         desktopImage: "/images/hero_banner.jpg",
         mobileImage: "/images/hero-banner-sm.jpg",
         title: "THE BEST CASINO FOR YOU",
@@ -155,6 +155,7 @@ export default {
     whatsappLink: "INSTASPIN",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20Instaspin",
     emailLink: "INSTASPIN",
+    klaviyoEmailFormId: "RECfSS",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -169,6 +170,7 @@ export default {
     whatsappLink: "LEGENDSPIN",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20Legendspin",
     emailLink: "LEGENDSPIN",
+    klaviyoEmailFormId: "UjD7NN",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -183,6 +185,7 @@ export default {
     whatsappLink: "SLOTMONSTER",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20Slot%20Monster",
     emailLink: "SLOTMONSTER",
+    klaviyoEmailFormId: "RECfSS",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -197,6 +200,7 @@ export default {
     whatsappLink: "BUBBLESBET",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20Bubblesbet",
     emailLink: "BUBBLESBET",
+    klaviyoEmailFormId: "VsFcuH",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -211,6 +215,7 @@ export default {
     whatsappLink: "LOVECASINO",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20love%20casino",
     emailLink: "LOVECASINO",
+    klaviyoEmailFormId: "SVbfU4",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -225,6 +230,7 @@ export default {
     whatsappLink: "IWILDCASINO",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20iWild",
     emailLink: "IWILDCASINO",
+    klaviyoEmailFormId: "Yh3ajk",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -239,6 +245,7 @@ export default {
     whatsappLink: "LUCKYPAYS",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20Lucky%20Pays",
     emailLink: "LUCKYPAYS",
+    klaviyoEmailFormId: "SfTX7t",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -253,6 +260,7 @@ export default {
     whatsappLink: "BOFCASINO",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20BofCasino",
     emailLink: "BOFCASINO",
+    klaviyoEmailFormId: "Rhi922",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -267,6 +275,7 @@ export default {
     whatsappLink: "CASINOLUCKYCHARMS",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20Lucky%20Charms",
     emailLink: "CASINOLUCKYCHARMS",
+    klaviyoEmailFormId: "UkmmN7",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
   {
@@ -281,6 +290,7 @@ export default {
     whatsappLink: "SAVANNAWINS",
     telegramLink: "https://t.me/Fortuneguide_bot?text=Hey%20I%20want%20my%20free%20spins%20from%20Savanna",
     emailLink: "SAVANNAWINS",
+    klaviyoEmailFormId: "RsjpFm",
     termsAndConditions: '<a href=""><u>Full terms apply</u></a>| +18 | #ad | New customers only -<a href="https://www.gambleaware.org/"><u>BeGambleawareNew</u></a> UK Players only. 18+A minimum deposit of £10 applies.Mr Gamble always insists that players gamble responsibly'
   },
 ]

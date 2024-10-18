@@ -2,8 +2,8 @@
   {
     "name": "index",
     "path": "/",
-    "component": "/root/luckypath/pages/index.vue",
+    "component": "/Users/nikita/Projects/luckypath/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_227df5ae"
+    "_name": "_1e81df5e"
   }
 ]

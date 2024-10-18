@@ -27,7 +27,6 @@
                             <p>{{ item.description }}</p>
                         </div>
                         <div class="col-12 col-sm-5 col-md-4">
-                            <div class="klaviyo-form-RECfSS"></div>
                             <div class="bonus">
                                 <p>{{ item.receiveBonusText}}</p>
                                 <small>CLAIM BELOW
@@ -37,7 +36,7 @@
                                 </small>
                                 <ul>
                                     <li v-if="item.whatsappLink">
-                                        <a @click.prevent="openModalSms(item.whatsappLink)" @touchstart.prevent="openModal(item.whatsappLink)">
+                                        <a @click.prevent="openSmsModal(item)" @touchstart.prevent="openEmailModal(item)">
                                             <img src="/images/whatsapp.png" alt="">
                                         </a>
                                     </li>
@@ -45,7 +44,7 @@
                                         <a :href="item.telegramLink" target="_blank"><img src="/images/telegram.png" alt=""></a>
                                     </li>
                                     <li v-if="item.emailLink">
-                                        <a @click.prevent="openModal(item.emailLink)" ><img src="/images/message.png" alt=""></a>
+                                        <a @click.prevent="openEmailModal(item)"><img src="/images/message.png" alt=""></a>
                                     </li>
                                 </ul>
                                 <p class="visiters">LIKES:{{ item.likes }}<img src="/images/like.png" alt="">VISITORS TODAY:{{ item.visitors}}<img src="/images/eye.png" alt=""></p>
@@ -71,44 +70,28 @@
             </template>
         </div>
 
-        <!-- Modal structure -->
-        <div v-if="showModal" class="modal show" data-aos="fade-down" style="display: block;" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
-                <div class="modal-body">
-                    <NewsletterForm :list-type="casinoClicked"/>
+        <div v-if="showModalSms" class="modal" data-aos="fade-up" data-aos-duration="400" style="display: block;" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" @click="closeSmsModal" aria-label="Close"></button>
+                    <div class="modal-body">
+                        <NewsletterFormsms :casinoname="casinoClicked"/>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-
-        <div v-if="showModalSms" class="modal show" data-aos="fade-down" style="display: block;" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <button type="button" class="btn-close" @click="closeModalSms" aria-label="Close"></button>
-                <div class="modal-body">
-                    <NewsletterFormsms :casinoname="casinoClicked"/>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <!-- Overlay for the modal backdrop -->
-        <div v-if="showModal" @click="closeModal" class="modal-backdrop fade show"></div>
-        <div v-if="showModalSms" @click="closeModalSms" class="modal-backdrop fade show"></div>
+        <div v-if="showModalSms" @click="closeSmsModal" class="modal-backdrop fade show"></div>
 
     </div>
 </template>
 
 <script>
-import NewsletterForm from '~/components/NewsletterForm.vue';
 import NewsletterFormsms from './NewsletterFormsms.vue';
 
 export default {
     name: 'GamblingSitesCards',
     components: {
-        NewsletterForm
+        NewsletterFormsms
     },
     data () {
         return {
@@ -117,13 +100,6 @@ export default {
             casinoClicked: ""
         }
     },
-    mounted() {
-    const script = document.createElement('script');
-    script.src = 'https://static.klaviyo.com/onsite/js/V46vbd/klaviyo.js';
-    script.type = 'text/javascript';
-    script.async = true;
-    document.body.appendChild(script);
-  },
     props: {
         title: {
             type: String,
@@ -137,22 +113,18 @@ export default {
         },
     },
     methods: {
-        openModal(casino) {
-            this.casinoClicked = casino;
-            this.showModal = true;
+        openEmailModal(casinoData) {
+            window._klOnsite = window._klOnsite || [];
+            window._klOnsite.push(['openForm', casinoData.klaviyoEmailFormId]);
         },
-        closeModal() {
-            this.showModal = false;
-        } ,
-
-        openModalSms(casino) {
-            this.casinoClicked = casino;
+        openSmsModal({whatsappLink}) {
+            this.casinoClicked = whatsappLink;
             this.showModalSms = true;
         },
-        closeModalSms() {
+        closeSmsModal() {
             this.showModalSms = false;
         }
-    }
+    },
 }
 </script>
 
